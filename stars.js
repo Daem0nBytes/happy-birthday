@@ -178,7 +178,6 @@ function animate() {
   drawClouds();
   drawShootingStars();
   requestAnimationFrame(animate);
-  console.log(clouds);
 }
 
 function init() {
