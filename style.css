@@ -1,0 +1,425 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: linear-gradient(to top, #FD5E53, #413163, #162447, #121e3c);
+  font-family: 'Playfair Display', serif;
+  color: white;
+  scroll-behavior: auto;
+  overscroll-behavior-y: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;            /* Chrome/Safari scrollbar hidden */
+}
+
+/* Background */
+
+#starCanvas {
+  position: fixed;           /* ← fix it to the viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;              /* full width */
+  height: 100vh;             /* full height */
+  z-index: 0;                /* behind all content */
+  background: transparent;
+  pointer-events: none;      /* prevents it from blocking clicks */
+}
+
+
+/* Music Icon */
+
+.music-btn {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  z-index: 1000;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.4));
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.music-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Gift Cover */
+#gift-cover {
+  position: fixed;
+  inset: 0;
+  background-color: #0b132b; /* Navy blue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden;
+  opacity: 1;
+  transition: opacity 3s ease;
+  flex-direction: column;
+}
+
+/* Ribbons – clean off-white */
+.ribbon-vertical,
+.ribbon-horizontal {
+  background-color: #f8f4e3; /* soft white/cream */
+  position: absolute;
+  z-index: 1;
+}
+
+.ribbon-vertical {
+  width: 38px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ribbon-horizontal {
+  height: 38px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Heart-shaped OPEN button */
+#open-gift-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  background-color: #f8f4e3; /* match ribbon */
+  color: #0b132b; /* navy for contrast */
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+
+#open-gift-btn:hover {
+  transform: scale(1.05);
+}
+
+#gift-tag {
+  position: absolute;
+  top: 120px;
+  right: 150px;
+  transform: rotate(10deg);
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #f8f4e3;
+  background-color: transparent;
+  padding: 0.5rem 1rem;
+  border: 2px dashed #f8f4e3;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+  pointer-events: none;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* Sections */
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  color: white;
+}
+
+#section-1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+}
+
+#section-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.slide2-container {
+  display: flex;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+.cake-wrapper {
+  flex: 0 0 40%;
+  text-align: center;
+}
+
+.cake-wrapper img {
+  max-width: 100%;
+  border-radius: 16px;
+  /*box-shadow: 0 0 20px rgba(255, 200, 200, 0.3);*/
+}
+
+.message-wrapper {
+  flex: 1;
+  margin-left: 2rem;
+}
+
+.slide2-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #f8f4e3;
+}
+
+.slide2-text {
+  font-family: 'Lora', serif;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #ffffff;
+
+  text-align: left;
+}
+
+.slide2-from {
+  display: block;
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: right;
+  /*color: #ff9999;*/
+
+  font-size: 2rem;
+  font-family: 'Dancing Script', cursive;
+}
+
+
+#section-3 {
+  flex-direction: column;
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+}
+
+.love-line-wrapper {
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  position: relative;
+  font-family: 'Dancing Script', cursive;
+  gap: 0.3rem;
+  text-align: center;
+  min-height: 10rem;
+}
+
+#lovePrefix {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 1s ease;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  height: 4.5rem;
+}
+
+#loveWord {
+  min-width: 8ch;
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  font-size: 5rem;
+  line-height: 1.1;
+  height: 5.5rem;
+}
+
+
+#section-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding: 3rem 1rem;
+  text-align: center;
+  user-select: none;
+  font-family: 'Dancing Script', cursive;
+  color: inherit; /* keep current color */
+}
+
+.s4-content-title {
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  letter-spacing: 0.06em;
+}
+
+.s4-content {
+  font-size: 2.2rem;
+  font-weight: 400;
+  max-width: 600px;
+  line-height: 1.6;
+  position: relative;
+  padding: 0 1rem;
+  text-transform: capitalize; /* makes first letter of each word uppercase */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Lora', serif;
+}
+
+.s4-content i.fa-regular {
+  color: #ffffff;
+  font-size: 2.4rem;
+}
+
+.s4-content-title::after {
+  content: '';
+  display: block;
+  width: 300px;
+  height: 3px;
+  background-color: #ffffff;
+  margin: 1.5rem auto 0;
+  border-radius: 2px;
+}
+
+.s4-endless {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.s4-tiny-note {
+  font-family: 'Lora', serif;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 50px;
+}
+
+.heart {
+  position: absolute;
+  top: -50px;
+  color: #ff0035;
+  font-size: 1.6rem;
+  opacity: 0.8;
+  animation: fall linear forwards;
+  pointer-events: none;
+  font-family: Arial, sans-serif;
+}
+
+.heart-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.heart-particle {
+  position: absolute;
+  top: -20px;
+  color: #ff7aa2;
+  animation: fall 6s linear forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+
+
+.fade-greeting span {
+  opacity: 0;
+  display: inline-block;
+  animation: fadeIn 0.6s forwards;
+  transform: translateY(10px);
+  margin-right: 0.03em;
+  white-space: pre;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.my-love {
+  color: #ff9999;
+  text-shadow: 0 0 15px rgba(255, 153, 153, 0.3);
+}
+
+/* Section Arrows */
+.arrow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  background-image: url('assets/chevron.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+  user-select: none;
+  transition-delay: 1s;
+}
+
+.arrow-first {
+  display: none;
+}
+
+.arrow.up {
+  top: 20px;
+  animation: bounceUp 2s infinite;
+  transform: translateX(-50%) rotate(180deg);
+}
+
+.arrow.down {
+  bottom: 20px;
+  animation: bounceDown 2s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+@keyframes bounceUp {
+  0%, 100% {
+    transform: translateX(-50%) rotate(180deg) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) rotate(180deg) translateY(-10px);
+  }
+}

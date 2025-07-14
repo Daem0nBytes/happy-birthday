@@ -1,0 +1,99 @@
+<!-- Hello babyyyy! I just knew you would look into the code 😊 muahhhh 😘 my little nerd 🤓 -->
+
+<!--   ###           ##                                                       #      -->
+<!--    #             #                                                       #      -->
+<!--    #             #     ###   #   #   ###          #   #   ###   #   #    #      -->
+<!--    #             #    #   #  #   #  #   #         #   #  #   #  #   #    #      -->
+<!--    #             #    #   #   # #   #####         #  ##  #   #  #   #    #      -->
+<!--    #             #    #   #   # #   #              ## #  #   #  #  ##           -->
+<!--   ###           ###    ###     #     ###              #   ###    ## #    #      -->
+<!--                                                   #   #                         -->
+<!--                                                    ###                          -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Dancing+Script&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+
+  <!-- Sky Background -->
+  <canvas id="starCanvas"></canvas>
+
+  <!-- Background Audio -->
+  <audio id="bg-music" src="assets/Romantic_Music_with_Relaxing_Piano_and_Guitar_Instrumental.mp3" loop></audio>
+  <div style="opacity: 0; transition: 0.5s" id="music-toggle" class="music-btn" title="Toggle Music">
+    <i class="fas fa-volume-up"></i>
+  </div>
+
+  <!-- Gift Cover -->
+  <div id="gift-cover">
+    <div class="ribbon-vertical"></div>
+    <div class="ribbon-horizontal"></div>
+    <button id="open-gift-btn" aria-label="Open gift">♥ OPEN ♥</button>
+    <div id="gift-tag">
+      <span>From: Daniel</span><br>
+      <span>To: Akanksha</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section class="section" id="section-1">
+    <div class="fade-greeting" id="greetingText"></div>
+    <div style="opacity: 0; transition: 0.5s" class="arrow down" onclick="scrollToSection(2)"></div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section" id="section-2">
+    <div class="slide2-container">
+      <div class="cake-wrapper">
+        <img src="assets/cake.webp" alt="birthday cake"/>
+      </div>
+      <div class="message-wrapper">
+        <h2 class="slide2-title">Today is Your Special Day!</h2>
+        <p class="slide2-text">
+          To the woman who lives in my heart no matter the miles between us — Akanksha.<br><br>
+
+          Even from across the distance, your presence wraps around me like warmth I never want to let go of. You're not just the love of my life — you're the voice I wait for, the smile I miss, and the soul I feel closest to, even when you're far.<br><br>
+
+          On this beautiful day, I want to remind you how endlessly proud I am of you. I wish you all the health your body deserves, all the wealth your dreams require, and all the happiness your heart can hold.<br><br>
+
+          Happy birthday, behbeh! You are my now, my always.
+          <span class="slide2-from">– with all my love, Daniel Martin</span>
+        </p>
+      </div>
+    </div>
+<!--    <div class="arrow up" onclick="scrollToSection(1)"></div>-->
+    <div style="opacity: 0; transition: 0.5s" id="sec-2-arrow" class="arrow down" onclick="scrollToSection(3)"></div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section class="section" id="section-3">
+    <div class="love-line-wrapper">
+      <span id="lovePrefix">I love your...</span>
+      <br>
+      <span id="loveWord" class="my-love"></span>
+    </div>
+<!--    <div class="arrow up" onclick="scrollToSection(2)"></div>-->
+    <div style="opacity: 0; transition: 0.5s" id="sec-3-love-words-arrow" class="arrow down" onclick="scrollToSection(4)"></div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section class="section" id="section-4">
+    <div class="s4-content-title">The End</div>
+    <div class="s4-content">But my love for you is <span class="s4-endless">endless</span> <i class="fa-regular fa-face-kiss-wink-heart"></i></div>
+    <p class="s4-tiny-note">Note: You may now use the keys or mouse wheel to go back to the top</p>
+<!--    <div class="arrow up" onclick="scrollToSection(3)"></div>-->
+  </section>
+
+  <script src="stars.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
